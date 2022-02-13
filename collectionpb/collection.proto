@@ -1,0 +1,37 @@
+syntax = "proto3";
+package collection;
+option go_package="/collectionpb";
+//Check Token
+message TokenRequest{
+    string tokenReq = 1;
+}
+message TokenResponse{
+    string tokenRes = 1;
+}
+//Check Token
+//-------------------
+//streaming data
+message DataStreamRequest{
+    int32 dataReq = 1;
+}
+message DataStreamResponse{
+    string dataRes = 1;
+}
+//streaming data
+//Check Token and Role
+/*message CheckRequest{
+    string checkToken = 1;
+    string checkThingId = 2;
+    string checkRole = 3;
+}
+message CheckResponse{
+    string checkRes = 1;
+}*/
+//Check Token and Role
+//-------------------
+service  CollectionService{
+    //khai bao API
+    rpc CheckToken(TokenRequest) returns (TokenResponse){} //check token
+    //rpc CheckTokenAndRole(CheckRequest) returns (CheckResponse){} //check token and Role
+    rpc SendData(stream DataStreamRequest) returns (DataStreamResponse){} //client streaming
+}

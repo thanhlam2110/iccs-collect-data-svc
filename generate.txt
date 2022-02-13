@@ -1,0 +1,1 @@
+protoc collectionpb/collection.proto --go_out=plugins=grpc:.
